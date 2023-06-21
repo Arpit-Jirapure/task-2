@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doc</title>
+</head>
+
+<body>
+    <button id="dateButton">Show Date</button>
+    <div id="date-result"></div>
+    <button id="timeButton">Show Time</button>
+    <div id="time-result"></div>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("dateButton").addEventListener("click", function () {
+            var options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            var currentDate = new Date().toLocaleDateString('en-GB',options);
+            document.getElementById("date-result").innerHTML = currentDate;
+        });
+        document.getElementById("timeButton").addEventListener("click", function () {
+            var options = {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                timeZoneName: 'short'
+            };
+            var currentTime = new Date().toLocaleTimeString('en-US', options);
+            document.getElementById("time-result").innerHTML = currentTime+" (Indian Standard Time)";
+        });
+
+    </script>
+</body>
+
+</html>
