@@ -1,41 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <title>Doc</title>
+    <style>
+        #text-input {
+            width: 100%;
+            height: 200px;
+            resize: none;
+        }
+    </style>
 </head>
-
 <body>
-    <button id="dateButton">Show Date</button>
-    <div id="date-result"></div>
-    <button id="timeButton">Show Time</button>
-    <div id="time-result"></div>
-
-    <div id="result"></div>
+    <textarea id="text-input" oninput="countWords()"></textarea>
+    <p id="word-count">Word count: 0</p>
 
     <script>
-        document.getElementById("dateButton").addEventListener("click", function () {
-            var options = {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            };
-            var currentDate = new Date().toLocaleDateString('en-GB',options);
-            document.getElementById("date-result").innerHTML = currentDate;
-        });
-        document.getElementById("timeButton").addEventListener("click", function () {
-            var options = {
-                hour: 'numeric',
-                minute: 'numeric',
-                second: 'numeric',
-                timeZoneName: 'short'
-            };
-            var currentTime = new Date().toLocaleTimeString('en-US', options);
-            document.getElementById("time-result").innerHTML = currentTime+" (Indian Standard Time)";
-        });
+        function countWords() {
+            var text = document.getElementById("text-input").value;
+            var words = text.trim().split(/\s+/);
+            var wordCount = words.length;
 
+            document.getElementById("word-count").textContent = "Word count: " + wordCount;
+        }
     </script>
 </body>
-
 </html>
